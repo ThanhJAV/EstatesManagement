@@ -1,5 +1,9 @@
 package com.estates.service;
 
-public interface INewService {
+import java.util.List;
 
+import com.estates.model.NewModel;
+
+public interface INewService {
+	List<NewModel> findByCategoryId(Long categoryid);
 }
