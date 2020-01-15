@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.estates.model.NewModel;
 
-public interface INewDAO {
+public interface INewDAO extends GenericDAO<NewModel> {
 	List<NewModel> findByCategoryId(Long categoryId);
+	Long save(NewModel newModel);
 }
