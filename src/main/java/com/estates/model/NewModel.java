@@ -7,6 +7,7 @@ public class NewModel extends AbstractModel {
 	private String thumbnail;
 	private String shortDescription;
 	private String content;
+	
 
 	public Long getCategoryId() {
 		return categoryId;

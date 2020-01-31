@@ -7,17 +7,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.estates.dao.GenericDAO;
 import com.estates.mapper.RowMapper;
+import com.mysql.cj.api.xdevapi.Type;
 
 public class AbstractDAO<T> implements GenericDAO<T> {
 	public Connection getConnection() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/news";
+			String url = "jdbc:mysql://localhost:3306/news?useUnicode=yes&characterEncoding=UTF-8";
 			String user = "root";
 			String password = "Hiimgosu071095";
 			return DriverManager.getConnection(url, user, password);
@@ -72,11 +74,13 @@ public class AbstractDAO<T> implements GenericDAO<T> {
 					statement.setLong(index, (Long) parameter);
 				} else if (parameter instanceof String) {
 					statement.setString(index, (String) parameter);
-				}else if (parameter instanceof Integer) {
+				} else if (parameter instanceof Integer) {
 					statement.setInt(index, (Integer) parameter);
-				}else if (parameter instanceof Timestamp) {
+				} else if (parameter instanceof Timestamp) {
 					statement.setTimestamp(index, (Timestamp) parameter);
-				}
+				} //else if (parameter == null) {
+//					statement.setNull(index, Types.NULL);
+//				}
 
 			}
 		} catch (SQLException e) {
